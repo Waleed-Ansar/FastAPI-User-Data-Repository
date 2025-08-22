@@ -9,7 +9,7 @@ app = FastAPI()
 # || APP CREATION ||
 
 # || DATABASE CONNECTION ||
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://Waleed-Ansar:fastAPI%40waleed570@fastapi-cluster.0yfuiu4.mongodb.net/?retryWrites=true&w=majority&appName=FastAPI-Cluster")
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://Waleed-Ansar:<password>@fastapi-cluster.0yfuiu4.mongodb.net/?retryWrites=true&w=majority&appName=FastAPI-Cluster")
 db = client['User_Database']
 Credentials = db['User_Data']
 # || DATABASE CONNECTION ||
@@ -65,5 +65,6 @@ async def  delete_user(user_id: int):
         return deleted
     raise HTTPException(status_code=404, detail='ID not Found.')
 # || MAIN CODE ||
+
 
 # uvicorn main:app --reload
