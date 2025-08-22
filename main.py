@@ -15,7 +15,7 @@ Credentials = db['User_Data']
 # || DATABASE CONNECTION ||
 
 # || SCHEMA AND MODEL ||
-PhoneNumber = Annotated[str, Field(pattern=r'^\+923\d{9}$')]
+PhoneNumber = Annotated[str, Field(pattern=r'^(?:\+923\d{9}|03\d{9})$')]
 class Credential(BaseModel):
     id: int = Field(..., gt=0, description='User ID Must Be Unique!')
     name: str
@@ -68,3 +68,4 @@ async def  delete_user(user_id: int):
 
 
 # uvicorn main:app --reload
+
