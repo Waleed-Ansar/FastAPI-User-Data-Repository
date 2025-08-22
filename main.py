@@ -18,14 +18,14 @@ Credentials = db['User_Data']
 PhoneNumber = Annotated[str, Field(pattern=r'^(?:\+923\d{9}|03\d{9})$')]
 class Credential(BaseModel):
     id: int = Field(..., gt=0, description='User ID Must Be Unique!')
-    name: str
+    name: str = Field(..., min_length=3, max_length=50)
     contact_no: PhoneNumber = Field(..., description="Phone number must start with +923 and contain 12 digits total")
     
     class config:
         populate_by_name = True
 
 class Update_Credential(BaseModel):
-    name: str
+    name: str = Field(..., min_length=3, max_length=50)
     contact_no: PhoneNumber = Field(..., description="Phone number must start with +923 and contain 12 digits total")
 # || SCHEMA AND MODEL ||
 
@@ -68,4 +68,5 @@ async def  delete_user(user_id: int):
 
 
 # uvicorn main:app --reload
+
 
